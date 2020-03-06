@@ -106,6 +106,7 @@ def read_2_e(file,nbasis):
     ijkl=compound_index(i,j,k,l)
     twoe_index.append(ijkl)
     twoe_value.append(V_line[4])
+    
  #define the 4 d array
  twoe=np.zeros([nbasis,nbasis,nbasis,nbasis])
 
@@ -120,7 +121,8 @@ def read_2_e(file,nbasis):
                 
            
  return twoe
- #####################################################
+ 
+#####################################################
 # The compound index code 
 #
 #on Input 
@@ -158,17 +160,8 @@ def compound_index(i,j,k,l):
 #On output
 #X--> the transformation matrix dimension (nbasis,nbasis)
 ##########################################################
-def get_X(S,nbasis):
-    lamda,L=np.linalg.eigh(S)
-    scaled_lambda=np.zeros([nbasis,nbasis])
-    X=np.zeros([nbasis,nbasis])
-    X_temp=np.zeros([nbasis,nbasis])
-    print(lamda)
-    for i in range(nbasis):
-        scaled_lambda[i][i]=(lamda[i])**(-0.5)
-    X_temp=np.matmul(scaled_lambda,L.transpose())
-    X=np.matmul(L,X_temp)
-    return X
+
+    
         
     
  
