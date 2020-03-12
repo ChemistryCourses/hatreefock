@@ -1,6 +1,6 @@
 #This a program to calculate the Hatree-Fock energy of a closed shell molecule
 import numpy as np
-from helper import no_of_e,find_distance,file_read_1e,read_2_e
+from helper import no_of_e,find_distance,file_read_1e,read_2_e,get_X
 
 #Read the geometry
 input_file=open('geom.dat')   #open the file
@@ -81,8 +81,12 @@ H_core=np.add(V,T)
 
 print('HCORE')
 print(H_core)
+
+# read the two electron integral
 AOINT=read_2_e('eri.dat',nbasis)
+
 X=get_X(S,nbasis)
+print('X')
 print(X)
 
 

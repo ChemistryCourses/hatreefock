@@ -160,7 +160,17 @@ def compound_index(i,j,k,l):
 #On output
 #X--> the transformation matrix dimension (nbasis,nbasis)
 ##########################################################
-
+def get_X(S,nbasis):
+   lambda_b,L_s=np.linalg.eig(S)
+   X=np.zeros([nbasis,nbasis])
+   X_temp=np.zeros([nbasis,nbasis])
+   temp=np.zeros([nbasis,nbasis])
+   for i in range(nbasis):
+       temp[i][i]=(lambda_b[i])**(-0.5)
+   X_temp=np.matmul(L_s,temp)
+   X=np.matmul(X_temp,L_s.transpose())
+   
+   return X
     
         
     
